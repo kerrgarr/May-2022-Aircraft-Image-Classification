@@ -5,6 +5,12 @@ https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/#:~:text=FGVC%2DAircraft%20B
 
 The dataset is discussed in the paper "Fine-Grained Visual Classification of Aircraft" by Maji, et al [2013] which can be found at https://arxiv.org/abs/1306.5151
 
+I modified the file structure a bit and have the re-structured code available for download at:
+
+https://www.dropbox.com/s/3ph6z4n5qwmz6v5/data.zip?dl=0
+
+(Please let me know if the link does not work.)
+
 To start, we want to 
 1. visualize the dataset
 2. train a deep neural network to classify images of the different aircraft models
