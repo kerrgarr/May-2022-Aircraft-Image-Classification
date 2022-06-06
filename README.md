@@ -8,3 +8,21 @@ The dataset is discussed in the paper "Fine-Grained Visual Classification of Air
 To start, we want to 
 1. visualize the dataset
 2. train a deep neural network to classify images of the different aircraft models
+
+Install dependencies using
+
+<code> python -m pip install -r requirements.txt </code>
+
+and if you are using conda use
+
+<code> conda env create aircraft.yml </code>
+<code> conda activate aircraft </code>
+
+Currently, in the folder code, you can train the models using a multi-layer perceptron model
+
+<code> python -m code.train -m mlp </code>
+
+We will work on CNN and more interesting models, too.
+
+This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) There are also many family classes for the aircraft (70 categories!), so we may consider reducing this dataset to a subset for better handling and visualization.
+
