@@ -9,13 +9,16 @@ To start, we want to
 1. visualize the dataset
 2. train a deep neural network to classify images of the different aircraft models
 
-Install dependencies using
+Install dependencies using:
 
 <code> python -m pip install -r requirements.txt </code>
 
-and if you are using conda use
+and if you are using conda use:
 
 <code> conda env create aircraft.yml </code>
+
+which can be activated for your Python environment using: 
+
 <code> conda activate aircraft </code>
 
 Currently, in the folder code, you can train the models using a multi-layer perceptron model
