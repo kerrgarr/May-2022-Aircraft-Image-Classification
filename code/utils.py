@@ -36,14 +36,10 @@ class AircraftDataset(Dataset):
              
                     
     def __len__(self):
-        """
-        Your code here
-        """
         return len(self.data)
 
     def __getitem__(self, idx):
         """
-        Your code here
         return a tuple: img, label
         """
         return self.data[idx]
