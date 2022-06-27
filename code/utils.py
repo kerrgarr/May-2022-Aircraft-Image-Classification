@@ -12,7 +12,8 @@ FAMILY_NAMES = ['A300','A310','A320','A330','A340','A380','ATR-42','ATR-72','An-
 class AircraftDataset(Dataset):
     def __init__(self, dataset_path):
         """
-        Load the dataset
+        Your code here
+        Hint: Use the python csv library to parse labels.csv
         """
         import csv
         from os import path
@@ -35,10 +36,14 @@ class AircraftDataset(Dataset):
              
                     
     def __len__(self):
+        """
+        Your code here
+        """
         return len(self.data)
 
     def __getitem__(self, idx):
         """
+        Your code here
         return a tuple: img, label
         """
         return self.data[idx]
@@ -58,6 +63,7 @@ if __name__ == "__main__":
     """
     Optional:
     This code down here allows you to measure how fast your data loader is.
+    The master solution takes about 2s to __init__ on a desktop CPU, and 0.2 / epoch.
     """
     from time import time
     import argparse
