@@ -58,7 +58,6 @@ if __name__ == "__main__":
     """
     Optional:
     This code down here allows you to measure how fast your data loader is.
-    The master solution takes about 2s to __init__ on a desktop CPU, and 0.2 / epoch.
     """
     from time import time
     import argparse
