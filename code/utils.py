@@ -12,8 +12,7 @@ FAMILY_NAMES = ['A300','A310','A320','A330','A340','A380','ATR-42','ATR-72','An-
 class AircraftDataset(Dataset):
     def __init__(self, dataset_path):
         """
-        Your code here
-        Hint: Use the python csv library to parse labels.csv
+        Load the dataset
         """
         import csv
         from os import path
