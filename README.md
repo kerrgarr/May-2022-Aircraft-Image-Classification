@@ -35,5 +35,5 @@ We will work on CNN and more interesting models, too.
 
 This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) 
 
-There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets: ['A300','A310','A320','A330','A340','A380'].
+There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['A300','A310','A320','A330','A340','A380'].
 
