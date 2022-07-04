@@ -24,7 +24,7 @@ class LinearClassifier(torch.nn.Module):
         """
         Linear Classifier
         """
-        self.network = torch.nn.Linear(3 * 64 * 64, 70)
+        self.network = torch.nn.Linear(3 * 64 * 64, 6)
 
     def forward(self, x):
         """
@@ -44,7 +44,7 @@ class MLPClassifier(torch.nn.Module):
         self.network = torch.nn.Sequential(
             torch.nn.Linear(3 * 64 * 64, 100),
             torch.nn.ReLU(),
-            torch.nn.Linear(100, 70),
+            torch.nn.Linear(100, 6),
         )
 
     def forward(self, x):
@@ -57,7 +57,7 @@ class MLPClassifier(torch.nn.Module):
         return self.network(x.view(x.size(0), -1))
 
 class CNNClassifier(torch.nn.Module):
-    def __init__(self, layers=[16, 32, 64, 128], n_input_channels=3, n_output_channels=70, kernel_size=5):
+    def __init__(self, layers=[16, 32, 64, 128], n_input_channels=3, n_output_channels=6, kernel_size=5):
         super().__init__()
 
         L = []

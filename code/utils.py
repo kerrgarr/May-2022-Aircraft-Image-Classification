@@ -5,9 +5,9 @@ from torchvision import transforms
 import pandas as pd
 import torchvision.transforms.functional as TR
 
-FAMILY_NAMES = ['A300','A310','A320','A330','A340','A380','ATR-42','ATR-72','An-12','BAE 146','BAE-125','Beechcraft 1900','Boeing 707','Boeing 717','Boeing 727','Boeing 737','Boeing 747','Boeing 757','Boeing 767','Boeing 777','C-130','C-47','CRJ-200','CRJ-700',
-'Cessna 172','Cessna 208','Cessna Citation','Challenger 600','DC-10','DC-3','DC-6','DC-8','DC-9','DH-82','DHC-1','DHC-6','DR-400','Dash 8',
-'Dornier 328','EMB-120','Embraer E-Jet','Embraer ERJ 145','Embraer Legacy 600','Eurofighter Typhoon','F-16','F/A-18','Falcon 2000','Falcon 900','Fokker 100','Fokker 50','Fokker 70','Global Express','Gulfstream','Hawk T1','Il-76','King Air','L-1011','MD-11','MD-80','MD-90','Metroliner','PA-28','SR-20','Saab 2000','Saab 340','Spitfire','Tornado','Tu-134','Tu-154','Yak-42']
+#FAMILY_NAMES = ['A300','A310','A320','A330','A340','A380','ATR-42','ATR-72','An-12','BAE 146','BAE-125','Beechcraft 1900','Boeing 707','Boeing 717','Boeing 727','Boeing 737','Boeing 747','Boeing 757','Boeing 767','Boeing 777','C-130','C-47','CRJ-200','CRJ-700','Cessna 172','Cessna 208','Cessna Citation','Challenger 600','DC-10','DC-3','DC-6','DC-8','DC-9','DH-82','DHC-1','DHC-6','DR-400','Dash 8','Dornier 328','EMB-120','Embraer E-Jet','Embraer ERJ 145','Embraer Legacy 600','Eurofighter Typhoon','F-16','F/A-18','Falcon 2000','Falcon 900','Fokker 100','Fokker 50','Fokker 70','Global Express','Gulfstream','Hawk T1','Il-76','King Air','L-1011','MD-11','MD-80','MD-90','Metroliner','PA-28','SR-20','Saab 2000','Saab 340','Spitfire','Tornado','Tu-134','Tu-154','Yak-42']
+
+FAMILY_NAMES = ['A300','A310','A320','A330','A340','A380']
 
 class AircraftDataset(Dataset):
     def __init__(self, dataset_path):
