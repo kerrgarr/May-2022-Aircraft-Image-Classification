@@ -63,7 +63,8 @@ What I see is that it performs with accuracy ~40 %, even with ResNet on the vali
 
 This means ResNet and CNN are overfitting to our training data !
 
-If you want to use Tensorboard, here is some extra code:
+_____________________________________________________________________
+For Windows, if you want to use Tensorboard, here is some extra code:
 
 <code> python -m code.train_cnn --log_dir log_test -n 1000 </code>
 
