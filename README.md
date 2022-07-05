@@ -111,7 +111,7 @@ code
              
 the message you'll receive will give you something like:
 
-http://LAPTOP-somenumbers:6006/
+http://something-like:6006/
 
 click on the address you get and open it in a web browser. See the interactive tensorboard. Done!
 
