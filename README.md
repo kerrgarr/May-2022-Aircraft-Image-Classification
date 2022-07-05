@@ -11,10 +11,11 @@ https://www.dropbox.com/s/3ph6z4n5qwmz6v5/data.zip?dl=0
 
 (Please let me know if the link does not work.)
 
-To start, we want to 
+We want to 
 1. visualize the dataset
-2. train a deep neural network to classify images of the different aircraft models
-
+2. train a deep neural network to classify images of the different aircraft models (Linear, MLP, CNN, ResNet)
+ ---------------------------------------------------------------------------------------
+ 
 Install dependencies using:
 
 <code> python -m pip install -r requirements.txt </code>
