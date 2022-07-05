@@ -1,6 +1,6 @@
 import torch
 import torch.nn.functional as F
-
+from torchvision import models
 
 class ClassificationLoss(torch.nn.Module):
     def forward(self, input, target):
@@ -55,6 +55,20 @@ class MLPClassifier(torch.nn.Module):
         @return: torch.Tensor((B,6))
         """
         return self.network(x.view(x.size(0), -1))
+
+
+class ResNet(torch.nn.Module):
+    def __init__(self, n_output_channels=6):
+        super(ResNet, self).__init__()
+        resnet = models.resnet152(pretrained=True)
+        self.feature_extractor = torch.nn.Sequential(*list(resnet.children())[:-1])
+        self.classifier = torch.nn.Linear(resnet.fc.in_features, n_output_channels)
+        
+    def forward(self, x):
+        with torch.no_grad():
+            x = self.feature_extractor(x)
+        x = x.view(x.size(0),-1)
+        return self.classifier(x)
 
 class CNNClassifier1(torch.nn.Module):
     def __init__(self, layers=[16, 32, 64, 128], n_input_channels=3, n_output_channels=6, kernel_size=5):
@@ -114,6 +128,7 @@ model_factory = {
     'linear': LinearClassifier,
     'mlp': MLPClassifier,
     'cnn': CNNClassifier,
+    'resnet': ResNet,
 }
 
 
