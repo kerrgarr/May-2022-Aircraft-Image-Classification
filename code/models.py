@@ -49,8 +49,6 @@ class MLPClassifier(torch.nn.Module):
 
     def forward(self, x):
         """
-        Your code here
-
         @x: torch.Tensor((B,3,64,64))
         @return: torch.Tensor((B,6))
         """
@@ -60,6 +58,10 @@ class MLPClassifier(torch.nn.Module):
 class ResNet(torch.nn.Module):
     def __init__(self, n_output_channels=6):
         super(ResNet, self).__init__()
+
+        """
+        ResNet 152
+        """
         resnet = models.resnet152(pretrained=True)
         self.feature_extractor = torch.nn.Sequential(*list(resnet.children())[:-1])
         self.classifier = torch.nn.Linear(resnet.fc.in_features, n_output_channels)
@@ -74,6 +76,9 @@ class CNNClassifier1(torch.nn.Module):
     def __init__(self, layers=[16, 32, 64, 128], n_input_channels=3, n_output_channels=6, kernel_size=5):
         super().__init__()
 
+        """
+        Simple CNN
+        """
         L = []
         c = n_input_channels
         for l in layers:
@@ -91,6 +96,10 @@ class CNNClassifier(torch.nn.Module):
     class Block(torch.nn.Module):
         def __init__(self, n_input, n_output, kernel_size=3, stride=2):
             super().__init__()
+
+            """
+            Deeper CNN
+            """
             self.c1 = torch.nn.Conv2d(n_input, n_output, kernel_size=kernel_size, padding=kernel_size // 2,
                                       stride=stride, bias=False)
             self.c2 = torch.nn.Conv2d(n_output, n_output, kernel_size=kernel_size, padding=kernel_size // 2, bias=False)
