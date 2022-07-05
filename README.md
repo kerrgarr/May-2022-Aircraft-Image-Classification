@@ -61,7 +61,7 @@ What I see is that it performs with accuracy ~40 %, even with ResNet on the vali
 
 <code> python -m code.PlotCNNprediction -model resnet -dataset data/train </code>
 
-This means ResNet and CNN are overfitting to our training data !
+This means ResNet and CNN are overfitting to our training data ! (Not good.)
 
 _____________________________________________________________________
 For Windows, if you want to use Tensorboard, here is some extra code:
