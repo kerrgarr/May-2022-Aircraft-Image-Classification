@@ -6,7 +6,7 @@ def train(args):
     model = model_factory[args.model]()
 
     """
-    Your code here
+    training module
 
     """
     import torch
