@@ -11,6 +11,10 @@ https://www.dropbox.com/s/3ph6z4n5qwmz6v5/data.zip?dl=0
 
 (Please let me know if the link does not work.)
 
+This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) 
+
+There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['A300','A310','A320','A330','A340','A380'].
+
 We want to 
 1. visualize the dataset
 2. train a deep neural network to classify images of the different aircraft models (Linear, MLP, CNN, ResNet)
@@ -28,15 +32,26 @@ which can be activated for your Python environment using:
 
 <code> conda activate aircraft </code>
 
-Currently, in the folder code, you can train the models using a multi-layer perceptron model
+--------------------------------------------------------------------------------------------------------
+Currently, in the folder code, you can train the models using a linear model, multi-layer perceptron model, convolutional neural network, and ResNet 152.
+
+To train the Linear, the code is: 
+
+<code> python -m code.train -m linear </code>
+
+To train the MLP, the code is: 
 
 <code> python -m code.train -m mlp </code>
 
-We will work on CNN and more interesting models, too.
+To train the CNN, the code is: 
 
-This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) 
+<code> python -m code.train -m cnn </code>
 
-There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['A300','A310','A320','A330','A340','A380'].
+To train the ResNet, the code is: 
+
+<code> python -m code.train -m resnet </code>
+
+---------------------------------------------------------------------
 
 To do some visualization:
 
