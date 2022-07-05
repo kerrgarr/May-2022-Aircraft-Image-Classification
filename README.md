@@ -67,25 +67,26 @@ _____________________________________________________________________
 For Windows, if you want to use Tensorboard, here is some extra code:
 
 First, create a folder called log_test. Your directly structure should look like:
-
-- log_test
-- data
--- train
---- image files ...
---- labels.csv
--- valid
---- image files ...
---- labels.csv
-- code
--- __init__.py
--- logging.py
--- models.py
--- train.py
--- train_cnn.py
--- utils.py
--- PlotCNNprediction.py
--- PlotDatasetImages.py
-
+```
+May-2022-Aircraft-Image-Classification
+log_test/
+data/
+   train
+      (various image files...)
+       labels.csv
+   valid
+      (various image files...)
+       labels.csv
+code
+   __init__.py
+   logging.py
+   models.py
+   train.py
+   train_cnn.py
+   utils.py
+   PlotCNNprediction.py
+   PlotDatasetImages.py
+```
 <code> python -m code.train_cnn --log_dir log_test -n 1000 </code>
 
 <code> python -m code.logging log_test </code>
