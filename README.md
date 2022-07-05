@@ -24,26 +24,26 @@ We want to
 
 For logging later on, optionally add a folder called log_test. Your directory structure should look like:
 ```
-May-2022-Aircraft-Image-Classification
+May-2022-Aircraft-Image-Classification/
 
-log_test/
-data/
-   train
-      (various image files...)
-       labels.csv
-   valid
-      (various image files...)
-       labels.csv
-code
-   __init__.py
-   logging.py
-   models.py
-   train.py
-   train_cnn.py
-   utils.py
-   PlotCNNprediction.py
-   PlotDatasetImages.py
-```
+   log_test/
+   data/
+      train
+         (various image files...)
+          labels.csv
+      valid
+         (various image files...)
+          labels.csv
+   code/
+      __init__.py
+      logging.py
+      models.py
+      train.py
+      train_cnn.py
+      utils.py
+      PlotCNNprediction.py
+      PlotDatasetImages.py
+   ```
  ---------------------------------------------------------------------------------------
  
 Install dependencies using:
