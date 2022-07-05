@@ -37,3 +37,44 @@ This dataset is tricky; the image sizes are different, so I had to use transform
 
 There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['A300','A310','A320','A330','A340','A380'].
 
+To do some visualization:
+
+Here is the code you can run before training the model to see a snapshot of what the dataset looks like:
+
+<code> python -m code.PlotDatasetImages data/train  </code>
+
+If you want to train with the CNNClassifier model in models.py, run the code:
+
+<code> python -m code.train -m cnn -n 1000 </code> 
+
+This runs the CNN classifier for 1000 epochs in train.py
+
+ResNet152 is a prebuilt image classification network that should beat our home-built CNN classifier. To run and test it, run
+
+<code> python -m code.train -m resnet -n 1000 </code> 
+
+To visualize the results of our model on the validation data, you can plot the following:
+
+<code> python -m code.PlotCNNprediction -model resnet -dataset data/valid </code>
+
+What I see is that it performs with accuracy ~40 %, even with ResNet on the validation data. It get ~100% accuracy on training set:
+
+<code> python -m code.PlotCNNprediction -model resnet -dataset data/train </code>
+
+This means ResNet and CNN are overfitting to our training data !
+
+If you want to use Tensorboard, here is some extra code:
+
+<code> python -m code.train_cnn --log_dir log_test -n 1000 </code>
+
+<code> python -m code.logging log_test </code>
+
+<code> tensorboard --logdir=log_test --port 6006 --bind_all  </code>
+             
+the message you'll receive will give you something like:
+
+http://LAPTOP-somenumbers:6006/
+
+click on the address you get and open it in a web browser. See the interactive tensorboard. Done!
+
+
