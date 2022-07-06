@@ -17,44 +17,6 @@ class ClassificationLoss(torch.nn.Module):
         return F.cross_entropy(input, target)
 
 
-class LinearClassifier(torch.nn.Module):
-    def __init__(self):
-        super().__init__()
-
-        """
-        Linear Classifier
-        """
-        self.network = torch.nn.Linear(3 * 64 * 64, 6)
-
-    def forward(self, x):
-        """
-        @x: torch.Tensor((B,3,64,64))
-        @return: torch.Tensor((B,6))
-        """
-        return self.network(x.view(x.size(0), -1))
-
-
-class MLPClassifier(torch.nn.Module):
-    def __init__(self):
-        super().__init__()
-
-        """
-        Multilayer perceptron method
-        """
-        self.network = torch.nn.Sequential(
-            torch.nn.Linear(3 * 64 * 64, 100),
-            torch.nn.ReLU(),
-            torch.nn.Linear(100, 6),
-        )
-
-    def forward(self, x):
-        """
-        @x: torch.Tensor((B,3,64,64))
-        @return: torch.Tensor((B,6))
-        """
-        return self.network(x.view(x.size(0), -1))
-
-
 class ResNet(torch.nn.Module):
     def __init__(self, n_output_channels=6):
         super(ResNet, self).__init__()
