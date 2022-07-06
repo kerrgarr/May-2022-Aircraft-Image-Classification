@@ -5,13 +5,10 @@ https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/#:~:text=FGVC%2DAircraft%20B
 
 The dataset is discussed in the paper "Fine-Grained Visual Classification of Aircraft" by Maji, et al [2013] which can be found at https://arxiv.org/abs/1306.5151
 
-<!-- 
+
 I modified the file structure a bit and have the re-structured code available for download at:
 
-https://www.dropbox.com/s/3ph6z4n5qwmz6v5/data.zip?dl=0
-
-(Please let me know if the link does not work.) 
--->
+https://drive.google.com/file/d/1GMujsV2_kqMsbDAaEPgO-4hyYHkckjjW/view?usp=sharing
 
 
 This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) 
