@@ -20,11 +20,7 @@ class AircraftDataset(Dataset):
         """
         import csv
         from os import path
-        #self.transform = transform
         self.data = []
-        #to_tensor = transforms.ToTensor()
-        #same_size = transforms.Resize((256, 256))
-        #transform_image = T.Compose([T.Resize(size=256),T.CenterCrop(size=224),T.ToTensor(),T.Normalize(mean_nums, std_nums)])
         transform_image = T.Compose([T.Resize(size=128),T.CenterCrop(size=112),T.ToTensor()])
         self.datapath = dataset_path
         with open(path.join(dataset_path, 'labels.csv'), newline='') as f:
@@ -33,10 +29,7 @@ class AircraftDataset(Dataset):
                 if label in FAMILY_NAMES:
                     image = Image.open(path.join(dataset_path, fname + ".jpg"))
                     label_id = FAMILY_NAMES.index(label)
-                    #tensor_image = to_tensor(image)
-                    #image_resized = same_size(tensor_image)
                     image_resized = transform_image(image)
-                    #image_resized = TR.resize(tensor_image, 64)
                     self.data.append((image_resized, label_id))
 
              
