@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-m', '--model', choices=['cnn', 'resnet'], default='linear')
+    parser.add_argument('-m', '--model', choices=['cnn', 'resnet'], default='cnn')
     # Put custom arguments here
     parser.add_argument('-n', '--num_epoch', type=int, default=50)
     parser.add_argument('-lr', '--learning_rate', type=float, default=1e-3)
