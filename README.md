@@ -20,7 +20,7 @@ There are also many family classes for the aircraft (70 categories!), so I chose
 
 We want to 
 1. visualize the dataset
-2. train a deep neural network to classify images of the different aircraft models (Linear, MLP, CNN, ResNet)
+2. train a deep neural network to classify images of the different aircraft models (CNN, ResNet)
 
 For logging later on, optionally add a folder called log_test. Your directory structure should look like:
 ```
@@ -59,15 +59,8 @@ which can be activated for your Python environment using:
 <code> conda activate aircraft </code>
 
 --------------------------------------------------------------------------------------------------------
-Currently, in the folder code, you can train the models using a linear model, multi-layer perceptron model, convolutional neural network, and ResNet 152.
+Currently, in the folder code, you can train the models using a convolutional neural network and ResNet 152.
 
-To train the Linear, the code is: 
-
-<code> python -m code.train -m linear </code>
-
-To train the MLP, the code is: 
-
-<code> python -m code.train -m mlp </code>
 
 To train the CNN, the code is: 
 
