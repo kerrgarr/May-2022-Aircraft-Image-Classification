@@ -96,8 +96,6 @@ class CNNClassifier(torch.nn.Module):
     
     
 model_factory = {
-    'linear': LinearClassifier,
-    'mlp': MLPClassifier,
     'cnn': CNNClassifier,
     'resnet': ResNet,
 }
