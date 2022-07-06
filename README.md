@@ -11,6 +11,8 @@ I modified the file structure a bit and have the re-structured code available fo
 https://drive.google.com/file/d/1GMujsV2_kqMsbDAaEPgO-4hyYHkckjjW/view?usp=sharing
 
 
+Unzip the data.zip file (see directory tree structure below). 
+
 This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) 
 
 There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['A300','A310','A320','A330','A340','A380'].
