@@ -76,8 +76,8 @@ class CNNClassifier(torch.nn.Module):
 
     def __init__(self, layers=[16, 32, 64, 128], n_output_channels=6, kernel_size=3):
         super().__init__()
-        self.input_mean = torch.Tensor([0.3521554, 0.30068502, 0.28527516])
-        self.input_std = torch.Tensor([0.18182722, 0.18656468, 0.15938024])
+        self.input_mean = torch.Tensor([0.485, 0.456, 0.406])
+        self.input_std = torch.Tensor([0.229, 0.224, 0.2254])
 
         L = []
         c = 3
