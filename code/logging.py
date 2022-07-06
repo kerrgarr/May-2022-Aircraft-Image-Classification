@@ -2,7 +2,7 @@ import torch
 import torch.utils.tensorboard as tb
 import os
 
-def test_logging(train_logger, valid_logger):
+def tensorboard_logging(train_logger, valid_logger):
     """
     Tensorboard logging of accuracy and loss
     """
@@ -35,4 +35,4 @@ if __name__ == "__main__":
     print(os.path.join(args.log_dir, 'train'))
     train_logger = tb.SummaryWriter(os.path.join(args.log_dir, 'train'))
     valid_logger = tb.SummaryWriter(os.path.join(args.log_dir, 'test'))
-    test_logging(train_logger, valid_logger)
+    tensorboard_logging(train_logger, valid_logger)
