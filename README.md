@@ -15,11 +15,11 @@ Unzip the data.zip file (see directory tree structure below).
 
 This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) 
 
-There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['A300','A310','A320','A330','A340','A380'].
+There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['Cessna 172','BAE-125','DR-400','Eurofighter Typhoon','Boeing 747','SR-20'].
 
 We want to 
 1. visualize the dataset
-2. train a deep neural network to classify images of the different aircraft models (CNN, ResNet)
+2. train a deep neural network to classify images of the different aircraft models (CNN, ResNet152, VGG16)
 
 For logging later on, optionally add a folder called log_test. Your directory structure should look like:
 ```
