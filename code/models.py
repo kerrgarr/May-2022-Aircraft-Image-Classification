@@ -16,7 +16,20 @@ class ClassificationLoss(torch.nn.Module):
         """
         return F.cross_entropy(input, target)
 
-
+class VGG16(torch.nn.Module):
+    def __init__(self, n_output_channels=6):
+        super(VGG16, self).__init__()
+        vgg = models.vgg16(pretrained=True)
+        num_ftrs = vgg.classifier[0].in_features
+        self.feature_extractor = torch.nn.Sequential(*list(vgg.children())[:-1])
+        self.classifier = torch.nn.Linear(num_ftrs, n_output_channels)
+        
+    def forward(self, x):
+        with torch.no_grad():
+            x = self.feature_extractor(x)
+        x = x.view(x.size(0),-1)
+        return self.classifier(x)
+    
 class ResNet(torch.nn.Module):
     def __init__(self, n_output_channels=6):
         super(ResNet, self).__init__()
@@ -99,6 +112,7 @@ model_factory = {
     'simple_cnn': CNNClassifier1,
     'cnn': CNNClassifier,
     'resnet': ResNet,
+    'vgg': VGG16,
 }
 
 
