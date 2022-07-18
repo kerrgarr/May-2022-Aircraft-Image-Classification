@@ -27,7 +27,7 @@ def PlotDatasetImages(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('dataset')
-    parser.add_argument('-n', type=int, default=3)
+    parser.add_argument('-n', type=int, default=5)
     args = parser.parse_args()
 
     PlotDatasetImages(args)
