@@ -4,16 +4,6 @@ from torchvision import models
 
 class ClassificationLoss(torch.nn.Module):
     def forward(self, input, target):
-        """
-
-        Compute mean(-log(softmax(input)_label))
-
-        @input:  torch.Tensor((B,C))
-        @target: torch.Tensor((B,), dtype=torch.int64)
-
-        @return:  torch.Tensor((,))
-
-        """
         return F.cross_entropy(input, target)
 
 class VGG16(torch.nn.Module):
