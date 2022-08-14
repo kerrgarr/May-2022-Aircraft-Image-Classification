@@ -5,7 +5,8 @@ from torchvision import models
 class ClassificationLoss(torch.nn.Module):
     def forward(self, input, target):
         return F.cross_entropy(input, target)
-
+    
+##############################################################################################
 class VGG16(torch.nn.Module):
     def __init__(self, n_output_channels=6):
         super(VGG16, self).__init__()
@@ -19,7 +20,9 @@ class VGG16(torch.nn.Module):
             x = self.feature_extractor(x)
         x = x.view(x.size(0),-1)
         return self.classifier(x)
+
     
+#############################################################################################    
 class ResNet(torch.nn.Module):
     def __init__(self, n_output_channels=6):
         super(ResNet, self).__init__()
@@ -37,69 +40,54 @@ class ResNet(torch.nn.Module):
         x = x.view(x.size(0),-1)
         return self.classifier(x)
 
-class CNNClassifier1(torch.nn.Module):
-    def __init__(self, layers=[16, 32, 64, 128], n_input_channels=3, n_output_channels=6, kernel_size=5):
-        super().__init__()
+##############################################################################################
+def down_conv(in_channels, out_channels, pad):
+    return torch.nn.Sequential(
+        torch.nn.Conv2d(in_channels, out_channels, 3, padding=pad),
+        torch.nn.ReLU(),
+        torch.nn.BatchNorm2d(out_channels),
+        torch.nn.Conv2d(out_channels, out_channels, 3, padding=pad),
+        torch.nn.ReLU(),
+        torch.nn.BatchNorm2d(out_channels),
+    )   
 
-        """
-        Simple CNN
-        """
-        L = []
-        c = n_input_channels
-        for l in layers:
-            L.append(torch.nn.Conv2d(c, l, kernel_size, stride=2, padding=kernel_size//2))
-            L.append(torch.nn.ReLU())
-            c = l
-        self.network = torch.nn.Sequential(*L)
-        self.classifier = torch.nn.Linear(c, n_output_channels)
-
-    def forward(self, x):
-        return self.classifier(self.network(x).mean(dim=[2, 3]))
-
-    
 class CNNClassifier(torch.nn.Module):
-    class Block(torch.nn.Module):
-        def __init__(self, n_input, n_output, kernel_size=3, stride=2):
-            super().__init__()
-
-            """
-            Deeper CNN
-            """
-            self.c1 = torch.nn.Conv2d(n_input, n_output, kernel_size=kernel_size, padding=kernel_size // 2,
-                                      stride=stride, bias=False)
-            self.c2 = torch.nn.Conv2d(n_output, n_output, kernel_size=kernel_size, padding=kernel_size // 2, bias=False)
-            self.c3 = torch.nn.Conv2d(n_output, n_output, kernel_size=kernel_size, padding=kernel_size // 2, bias=False)
-            self.b1 = torch.nn.BatchNorm2d(n_output)
-            self.b2 = torch.nn.BatchNorm2d(n_output)
-            self.b3 = torch.nn.BatchNorm2d(n_output)
-            self.skip = torch.nn.Conv2d(n_input, n_output, kernel_size=1, stride=stride)
-
-        def forward(self, x):
-            return F.relu(self.b3(self.c3(F.relu(self.b2(self.c2(F.relu(self.b1(self.c1(x)))))))) + self.skip(x))
-
-    def __init__(self, layers=[16, 32, 64, 128], n_output_channels=6, kernel_size=3):
+    def __init__(self):
         super().__init__()
-        self.input_mean = torch.Tensor([0.485, 0.456, 0.406])
-        self.input_std = torch.Tensor([0.229, 0.224, 0.2254])
 
-        L = []
-        c = 3
-        for l in layers:
-            L.append(self.Block(c, l, kernel_size, 2))
-            c = l
-        self.network = torch.nn.Sequential(*L)
-        self.classifier = torch.nn.Linear(c, n_output_channels)
-
-    def forward(self, x):
-        z = self.network((x - self.input_mean[None, :, None, None].to(x.device)) / self.input_std[None, :, None, None].to(x.device))
-        return self.classifier(z.mean(dim=[2, 3]))    
+        self.relu    = torch.nn.ReLU()
+        self.maxpool = torch.nn.MaxPool2d(kernel_size=2, ceil_mode=True)         
+        
+        a = 32
+        b = a*2 #64
+        c = b*2 #128
+        d = c*2 #256
+        m = 12 
+        
+        self.adapt = torch.nn.AdaptiveMaxPool2d(m)        
+        self.linear = torch.nn.Linear(d * m * m, 6)                 
+        n_class = 6
+        
+        self.conv_down1 = down_conv(3, a, 1) # 3 --> 32
+        self.conv_down2 = down_conv(a, b, 1)  # 32 --> 64
+        self.conv_down3 = down_conv(b, c, 1)  # 64 --> 128
+        self.conv_down4 = down_conv(c, d, 1)  # 128 --> 256
     
-    
-    
+    def forward(self, x):        
+        conv1 =  self.conv_down1(x)
+        mx1 = self.maxpool(conv1)
+        conv2 =  self.conv_down2(mx1)
+        mx2 = self.maxpool(conv2) 
+        conv3 =  self.conv_down3(mx2)
+        mx3 = self.maxpool(conv3) 
+        conv4 =  self.conv_down4(mx3)
+        out = self.adapt(conv4)
+        out = out.view(x.size(0), -1)
+        out = self.linear(out)        
+        return out   
     
     
 model_factory = {
-    'simple_cnn': CNNClassifier1,
     'cnn': CNNClassifier,
     'resnet': ResNet,
     'vgg': VGG16,
