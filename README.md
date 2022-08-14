@@ -97,9 +97,9 @@ and compare with performance on the training set:
 
 
 _____________________________________________________________________
-For Windows, if you want to use Tensorboard, here is some extra code:
+If you want to use Tensorboard, here is some extra code:
 
-<code> python -m code.train_cnn --log_dir log_test -n 1000 </code>
+<code> python -m code.train -m cnn --log_dir log_test -n 1000 </code>
 
 <code> python -m code.logging log_test </code>
 
