@@ -35,10 +35,8 @@ May-2022-Aircraft-Image-Classification/
           labels.csv
    code/
       __init__.py
-      logging.py
       models.py
       train.py
-      train_cnn.py
       utils.py
       PlotCNNprediction.py
       PlotDatasetImages.py
