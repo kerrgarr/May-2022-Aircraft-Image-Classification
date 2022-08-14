@@ -101,7 +101,7 @@ If you want to use Tensorboard, here is some extra code:
 
 <code> python -m code.train -m cnn --log_dir log_test -n 1000 </code>
 
-<code> python -m code.logging log_test </code>
+followed by:
 
 <code> tensorboard --logdir=log_test --port 6006 --bind_all  </code>
              
