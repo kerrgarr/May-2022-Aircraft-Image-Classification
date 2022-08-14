@@ -105,7 +105,7 @@ followed by:
              
 the message you'll receive will give you something like:
 
-http://your-Laptop-name:6006/
+<code> http://your-Laptop-name:6006/ </code>
 
 click on the address you get and open it in a web browser. See the interactive tensorboard. Done!
 
