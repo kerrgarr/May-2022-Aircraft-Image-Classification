@@ -1,14 +1,18 @@
-#from .models import CNNClassifier, save_model
+
 from .models import ClassificationLoss, model_factory, save_model
 from .utils import accuracy, load_data
 import torch
 import torch.utils.tensorboard as tb
-
+from sklearn.metrics import confusion_matrix, classification_report
+import seaborn as sns
+from .utils import AircraftDataset, FAMILY_NAMES
+import pandas as pd
 from PIL import Image
 import numpy as np
 import torch
 from torchvision import transforms
 import os, subprocess, sys
+import matplotlib.pyplot as plt
 
 def train(args):
     from os import path
@@ -59,13 +63,27 @@ def train(args):
         model.eval()
         for img, label in valid_data:
             img, label = img.to(device), label.to(device)
-            vacc_vals.append(accuracy(model(img), label).detach().cpu().numpy())
+            val_prediction = model(img).max(1)[1].type_as(label)
+            val_true = label
+            #print(val_prediction)
+            #print(label)
+            vacc_vals.append( accuracy(model(img), label).detach().cpu().numpy() )
         avg_vacc = sum(vacc_vals) / len(vacc_vals)
         valid_logger.add_scalar('accuracy', avg_vacc, global_step=global_step)
 
         print('epoch %-3d \t loss = %0.3f \t acc = %0.3f \t val acc = %0.3f' % (epoch, avg_loss, avg_acc, avg_vacc))
         
     save_model(model)
+
+    arr = confusion_matrix(val_true.view(-1).detach().cpu().numpy(), val_prediction.view(-1).detach().cpu().numpy())
+    class_names = FAMILY_NAMES
+    df_cm = pd.DataFrame(arr, class_names, class_names)
+    plt.figure(figsize = (6,6))
+    sns.heatmap(df_cm, annot=True, fmt="d", cmap='BuGn')
+    plt.xlabel("prediction")
+    plt.ylabel("label (ground truth)")
+    plt.show() 
+
 
 if __name__ == '__main__':
     import argparse
