@@ -78,7 +78,7 @@ def train(args):
     arr = confusion_matrix(val_true.view(-1).detach().cpu().numpy(), val_prediction.view(-1).detach().cpu().numpy())
     class_names = FAMILY_NAMES
     df_cm = pd.DataFrame(arr, class_names, class_names)
-    plt.figure(figsize = (6,6))
+    plt.figure()
     sns.heatmap(df_cm, annot=True, fmt="d", cmap='BuGn')
     plt.xlabel("prediction")
     plt.ylabel("label (ground truth)")
