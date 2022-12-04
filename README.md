@@ -1,5 +1,7 @@
 # Tutorial on Different Image Classification Networks applied to Aircraft Dataset
 
+![image info](./pics/Easy_Hard.png)
+
 ## Objective
 
 Compare the classification accuracy of a simple built-from-scratch CNN model to the pretrained CNN models, ResNet-152 and VGG-16, using the FGVC Aircraft image dataset. 
@@ -105,13 +107,8 @@ To train the ResNet, the code is:
 
 <code> python -m code.train -m resnet </code>
 
----------------------------------------------------------------------
 
-## Visualization
-
-Here is the code you can run before training the model to see a snapshot of what the dataset looks like:
-
-<code> python -m code.PlotDatasetImages data/train  </code>
+### Training for 1000 epochs
 
 If you want to train with the CNNClassifier model in models.py, run the code:
 
@@ -123,6 +120,16 @@ ResNet152 is a prebuilt image classification network that should beat our home-b
 
 <code> python -m code.train -m resnet -n 1000 </code> 
 
+---------------------------------------------------------------------
+
+## Visualization
+
+Here is the code you can run before training the model to see a snapshot of what the dataset looks like:
+
+<code> python -m code.PlotDatasetImages data/train  </code>
+
+![image info](./pics/DifferentLooking.png)
+
 To visualize the results of our model on the validation data, you can plot the following:
 
 <code> python -m code.PlotCNNprediction -model resnet -dataset data/valid </code>
@@ -130,7 +137,6 @@ To visualize the results of our model on the validation data, you can plot the f
 and compare with performance on the training set:
 
 <code> python -m code.PlotCNNprediction -model resnet -dataset data/train </code>
-
 
 _____________________________________________________________________
 
@@ -150,4 +156,7 @@ the message you'll receive will give you something like:
 
 click on the address you get and open it in a web browser. See the interactive tensorboard. Done!
 
+## Results
+
+![image info](./pics/Results70.png)
 
