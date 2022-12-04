@@ -107,7 +107,7 @@ To train the ResNet, the code is:
 
 ---------------------------------------------------------------------
 
-## To do some visualization
+## Visualization
 
 Here is the code you can run before training the model to see a snapshot of what the dataset looks like:
 
