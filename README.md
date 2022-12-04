@@ -22,7 +22,7 @@ We want to
 * Loss function: Cross Entropy Loss
 * 100 epochs
 
-**Made from scratch CNN Model**
+**Simple made-from-scratch CNN Model**
 * Activation function: ReLU
 * 3x3 Kernel size in convolutional layers
 * Max pooling with 2x2 Kernel size
