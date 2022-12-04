@@ -158,5 +158,7 @@ click on the address you get and open it in a web browser. See the interactive t
 
 ## Results
 
+The models are overfit, but nevertheless VGG-16 stands out as the best model of the bunch. 70 different aircraft (some of which look very similar) is pretty difficult to classify accurately!
+
 ![image info](./pics/Results70.png)
 
