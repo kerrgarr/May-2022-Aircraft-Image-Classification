@@ -149,7 +149,7 @@ click on the address you get and open it in a web browser. See the interactive t
 
 ## Results
 
-The models are overfit, but nevertheless VGG-16 stands out as the best model of the bunch. 70 different aircraft (some of which look very similar) is pretty difficult to classify accurately!
+The models are overfit, but nevertheless VGG-16 stands out as the best model of the bunch. 70 different aircraft (some of which look very similar) is pretty difficult to classify accurately! So, if you gave VGG-16 a random image of an aircraft, it could guess what it is with almost 50% accuracy (out of 70 families). That may not sound impressive but is remarkable considering the ostensible indistinguishability of so many aircraft models. 
 
 ![image info](./pics/Results70.png)
 
