@@ -15,15 +15,12 @@ We want to
 
 ## Computational Details
 
-* Train-test split ratio
-  50/50 split
-
-* Training
-** Batch size: 128
-** Learning rate: 0.001
-** Optimization algorithm: stochastic gradient descent
-** Loss function: Cross Entropy Loss
-** 100 epochs
+* Train-validation split ratio: 50/50 split
+* Batch size: 128
+* Learning rate: 0.001
+* Optimization algorithm: stochastic gradient descent
+* Loss function: Cross Entropy Loss
+* 100 epochs
 
 **Made from scratch CNN Model**
 * Activation function: ReLU
