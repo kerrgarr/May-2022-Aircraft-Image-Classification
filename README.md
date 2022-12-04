@@ -1,4 +1,4 @@
-# May-2022-Aircraft-Image_Classification
+# Tutorial on Different Image Classification Networks applied to Aircraft Dataset
 
 The FGVC-Aircraft dataset containing 10,000 images of aircraft (covering 100 different models) can be downloaded at 
 https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/#:~:text=FGVC%2DAircraft%20Benchmark,375%20KB%20%7C%20MD5%20Sum%5D.
