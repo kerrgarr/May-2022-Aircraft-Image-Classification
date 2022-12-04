@@ -107,18 +107,9 @@ To train the ResNet, the code is:
 
 <code> python -m code.train -m resnet </code>
 
+To train VGG-16, the code is: 
 
-### Training for 1000 epochs
-
-If you want to train with the CNNClassifier model in models.py, run the code:
-
-<code> python -m code.train -m cnn -n 1000 </code> 
-
-This runs the CNN classifier for 1000 epochs in train.py
-
-ResNet152 is a prebuilt image classification network that should beat our home-built CNN classifier. To run and test it, run
-
-<code> python -m code.train -m resnet -n 1000 </code> 
+<code> python -m code.train -m vgg </code>
 
 ---------------------------------------------------------------------
 
