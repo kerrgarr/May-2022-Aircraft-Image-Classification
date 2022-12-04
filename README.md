@@ -1,9 +1,21 @@
 # Tutorial on Different Image Classification Networks applied to Aircraft Dataset
 
+
+## Dataset
+
 The FGVC-Aircraft dataset containing 10,000 images of aircraft (covering 100 different models) can be downloaded at 
 https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/#:~:text=FGVC%2DAircraft%20Benchmark,375%20KB%20%7C%20MD5%20Sum%5D.
 
 The dataset is discussed in the paper "Fine-Grained Visual Classification of Aircraft" by Maji, et al [2013] which can be found at https://arxiv.org/abs/1306.5151
+
+### 10,000 images of aircraft:
+
+* 100 Model Variants (e.g. Boeing 737-700) 
+
+* 70 Families (e.g. Boeing 737) 
+
+* 30 Manufacturers (e.g. Boeing)
+
 
 
 I modified the file structure a bit and have the re-structured code available for download at:
@@ -12,8 +24,6 @@ https://drive.google.com/file/d/1GMujsV2_kqMsbDAaEPgO-4hyYHkckjjW/view?usp=shari
 
 
 Unzip the data.zip file (see directory tree structure below). 
-
-This dataset is tricky; the image sizes are different, so I had to use transform.Resize() on the data. (I forced the images to be 64x64 which may hurt the accuracy of the model. Just as an aside, it would be good to cover data augmentation for image classification -- rotations, grayscale, resizing, etc.) 
 
 There are also many family classes for the aircraft (70 categories!), so I chose to reduce it to just the Airbus fleets (6 classes): ['Cessna 172','BAE-125','DR-400','Eurofighter Typhoon','Boeing 747','SR-20'].
 
